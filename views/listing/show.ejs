@@ -1,0 +1,115 @@
+<% layout('./layouts/boilerplate.ejs') %>
+<style>
+    .show-card{
+    padding-left: 0 !important;
+    padding-right: 0 !important; 
+        /* object-fit: cover !important; */
+        border-radius:1rem !important ;
+}
+img{
+width: 80%;
+object-fit: cover;
+    }
+    .btns{
+    display: flex;
+}
+</style>
+<body>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row p-3">
+                <div class="col-sm-3"></div>
+        <div class="col-sm-6 "> <h3><%=find.title %></h3></div>
+        <div class="col-sm-3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 ">
+            <div class="row p-3">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 ">
+                    <div class="mb-3 .show-card rounded rounded-5">
+                        <img src="<%=find.image.url %>" class="show_img" style="max-height: 40vh;width: 100%;" alt="...">
+                        <div class="card-body">
+                          <p class="card-text"><%=find.description %></br>
+                            <%=find.country %></br>
+                            <%=find.location %></br>
+                                <b>&#8377</b><%=find.price.toLocaleString("en-IN") %></br></p>
+                          <p class="card-text m-0 p-0" ><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
+
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+          <div class="row m-0 p-0 mb-3 ">
+            <div class="col-sm-6  mx-auto">
+                <div class="btns ">
+                    <a href="/listings/<%=find._id%>/edit" class=" btn btn-danger ms-3  "> Edit</a>
+                    <form action="/listings/<%=find._id%>/?_method=delete" method="post">
+                        <button type="submit" class=" btn btn-danger ms-3  ">Delete</button>
+                    </form>
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-12 ">
+            <div class="row p-3">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 ">
+                    <hr>
+    <h4>Leave Rating</h4>
+    <form action="/listings/<%=find._id%>/reviews" method="post" novalidate  class="needs-validation">
+        <div class="mb-3 mt-3">
+            <label class="form-label" for="rating">rating</label>
+            <input type="range" min="0" max="5"name="review[rating]" class="form-range">
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="comment" class="form-label">comment</label>
+            <textarea  id="comment" required name="review[Comment]" class="form-control"cols="35"  rows="3"></textarea>
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                Please Enter some comment for review.
+              </div>
+        </div>
+        
+        <button type="submit" class="btn  btn-outline-danger">Submit</button>
+    </form>
+
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+    </div>
+    </div>
+    <!-- ===================review -->
+    <div class="row">
+        <div class="col-12 ">
+            <div class="row p-3">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 ">
+                    <hr>
+                    <h4>All Review</h4>
+                   <div class="row">
+                    <% for(finds of find.reviews){ %>
+                       <div class="col-sm-6 mb-3">
+                        <div class="card ">
+                            <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text"><%=finds.Comment %></p>
+                            <p class="card-text"><%=finds.rating %>Stars</p>
+                            <form action="/listings/<%=find._id%>/reviews/<%=finds._id %>/?_method=delete" method="post">
+                                <button type="submit" class="btn btn-dark">Delete</button>
+                            </form>
+                        </div>
+                        </div>
+                       </div>
+                        <% } %>
+                        </div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+    </div>
+    </div>
+</body>

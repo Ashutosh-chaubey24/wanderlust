@@ -1,0 +1,69 @@
+<% layout('./layouts/boilerplate.ejs') %>
+<style>
+    body{
+
+    }
+</style>
+<body>
+    
+   <div class="row">
+    <div class="col-8 offset-2">
+        <h2>Create New listing</h2>
+        <div class="row ">
+        <form action="/listings" method="post"  novalidate  class="needs-validation">
+    
+            <div class="mb-3" >
+                <label for="title"  class="form-label">title</label>
+                <input type="text" required  name="listing[title]" class="form-control">
+                <div class="valid-feedback">
+                    good!
+                  </div>
+                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    Please Enter title.
+                  </div>
+            </div>
+            
+       <div class="mb-3">
+        <label for="description"  class="form-label">description</label>
+        <textarea name="listing[description]" required class="form-control"></textarea>
+        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+         Enter valid description
+          </div>
+       </div>
+       <div class="mb-3">
+        <label for="image"  class="form-label">image file</label>
+        <input type="text" name="listing[image.url]"  class="form-control">
+       </div>
+    <div class="mb-3">
+        <label for="location" class="form-lable">location</label>
+        <input type="text"  class="form-control" required name="listing[location]">
+        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+           Enter valid location
+          </div>
+    </div>
+    
+       <div class="row">
+            <div class="mb-3 col-md-4" >
+                <label for="price"  class="form-label">price</label>
+                <input class="form-control" required name="listing[price]">
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                   Enter valid Price
+                  </div>
+               </div>
+               <div class="mb-3 col-md-8">
+            <label for="country">country</label>
+            <input type="text" class="form-control" required name="listing[country]">
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+              enter valid contry
+              </div>
+        </div>
+       </div>
+    
+        <div class="mb-3">
+            <button type="submit" class="btn btn-danger ps-4">submit</button>    
+        </div>
+    </div>
+        </form>
+    </div>
+   </div>
+</body>

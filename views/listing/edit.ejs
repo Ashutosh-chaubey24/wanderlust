@@ -1,0 +1,63 @@
+<% layout("./layouts/boilerplate.ejs") %>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3 class="m-2 p-2">Edit Listing</h3>
+            <form action="/listings/<%=find._id%>?_method=put" method="post"  novalidate  class="needs-validation">
+       
+                <div class="mb-3">
+                    <label for="title"  class="form-label">title</label>
+                    <input type="text"required  value="<%=find.title %>" class="form-control" name="listing[title]">
+                    <div class="valid-feedback">
+                        good!
+                      </div>
+                      <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        Please Enter title.
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="title"  class="form-label">description</label>
+                    <input type="text"required  value="<%=find.description %>"class="form-control" name="listing[description]">
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        Please Enter shot des.
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="title"  class="form-label">country</label>
+                        <input type="text" required  value="<%=find.country %>"class="form-control" name="listing[country]">
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            Please Enter Valid contry.
+                          </div>
+                    </div>
+                    <div class="mb-3 col-md-8">
+                        <label for="title"  class="form-label">price</label>
+                        <input type="number" value="<%=find.price %>" required  class="form-control" name="listing[price]">
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            Please Enter valid price.
+                          </div>
+                    </div>
+                
+                <div class="mb-3">
+                    <label for="title"  class="form-label">url</label>
+                    <input type="text"value="<%=find.image.url %>required"class="form-control" name="listing[image.url]">
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        Please Enter img.
+                      </div>
+                </div>
+                </div>
+                <div class="mb-3">
+                    <label for="title"  class="form-label">location</label>
+                    <input type="text"value="<%=find.location %> required "class="form-control" name="listing[location]">
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        Please Enter Valid location.
+                      </div>
+                </div>
+               
+            
+           
+            
+            <button type="submit" class="btn btn-danger">edit this post</button>
+        </form>
+        </div>
+    </div>
+</body>

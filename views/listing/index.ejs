@@ -1,0 +1,54 @@
+<% layout('./layouts/boilerplate.ejs') %>
+<style>
+    ul{
+        margin: 0;
+        padding: 0;
+    }
+    .card{
+        border: none !important;
+        margin-bottom:1rem !important ;
+    }
+    .card-img-top{
+        width: 100% !important;
+        object-fit: cover !important;
+        border-radius:1rem !important ;
+
+    }.card-body{
+        padding: 0 !important;
+    }
+    .row a{
+        text-decoration: none;
+    }
+    .card-img-overlay{
+        opacity: 0;
+    }
+    .card-img-overlay:hover{
+        opacity: .2;
+        background-color: white;
+    }
+</style>
+<body>
+    <!-- <h3>ALL listings</h3>
+    <form action="/listings/new" method="get">
+        <button type="submit">create all listing</button>
+     </form> -->
+     <div class="row row-cols-lg-3 row-md-3 row-sm-12  m-1 ">
+        <% for(let listing of ALLlistings){%>
+           <a href="/listings/<%=listing._id %>"> <div class="card">
+          <img src="<%=listing.image.url %>" class="card-img-top" alt="listing-img"  style="height: 20rem;">
+          <div class="card-img-overlay">
+            abc
+          </div>
+           <div class="card-body">
+             <p class="card-text">
+               <b><%=listing.title %></b><br>
+               <i class="fa-solid fa-indian-rupee-sign"></i> <%=listing.price.toLocaleString("en-IN") %>
+             </p>
+           </div>
+         </div>
+       </a>
+         <% } %>
+       </div>
+    
+</body>
+
